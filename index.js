@@ -1,9 +1,17 @@
 import express from 'express'
+const app = express();
 
-const app = express()
-app.get('/',(req, res) => {
-    res.send('Hello World')
+import { auth } from "./routes/auth.js";
+
+app.use(express.json());
+
+app.use('/api/auth', auth);
+
+app.listen(3000, ()=>{
+    console.log("Servidor en puerto 3000");
+
 })
 
-app.listen(3000)
-console.log('Server on port', 3000)
+
+
+
